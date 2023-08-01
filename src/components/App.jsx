@@ -17,6 +17,7 @@ import AppLayout from './AppLayout'
 import MessagePanel from './AppMessagePanel'
 
 import ModalSettings from './ModalSettings'
+import ModalSave from './ModalSave'
 import ModalExport from './ModalExport'
 import ModalSources from './ModalSources'
 import ModalOpen from './ModalOpen'
@@ -227,6 +228,7 @@ export default class App extends React.Component {
         sources: false,
         open: false,
         shortcuts: false,
+        save: false,
         export: false,
         // TODO: Disabled for now, this should be opened on the Nth visit to the editor
         survey: false,
@@ -907,6 +909,12 @@ export default class App extends React.Component {
         isOpen={this.state.isOpen.settings}
         onOpenToggle={this.toggleModal.bind(this, 'settings')}
         openlayersDebugOptions={this.state.openlayersDebugOptions}
+      />
+      <ModalSave
+        mapStyle={this.state.mapStyle}
+        onStyleChanged={this.onStyleChanged}
+        isOpen={this.state.isOpen.save}
+        onOpenToggle={this.toggleModal.bind(this, 'save')}
       />
       <ModalExport
         mapStyle={this.state.mapStyle}
